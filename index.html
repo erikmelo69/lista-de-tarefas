@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Madimi+One&display=swap"
+      rel="stylesheet"
+    />
+    <title>lista de tarefas</title>
+</head>
+<body>
+
+    <div>
+        <div class="text">
+            <h1>lista de tarefas</h1>
+        </div>
+        <div class="main">
+            <input type="text" id="taskInput" placeholder="adicionar nova tarefa"/>
+            <button  onclick="addTask()">enviar</button>
+            <div>
+                <ul id="taskList" ></ul>
+            </div>
+        </div>
+    </div>
+<script>
+    function addTask(){
+        let taskInput= document.getElementById("taskInput")
+        let taskList = document.getElementById("taskList")
+        if (taskInput.value.trim() !== ""){
+
+            let li = document.createElement("li")
+            let spam = document.createElement("spam");
+            let deleteButton = document.createElement("button");
+            let updateButton = document.createElement("button");
+
+            spam.textContent = taskInput.value;
+            deleteButton.textContent = "Apagar";
+            updateButton.textContent = "Atualizar";
+
+            deleteButton.onclick = function () {
+                taskList.removeChild(li);
+            };
+
+            updateButton.onclick = function () {
+                let newTask = prompt("Editar tarefas:",spam.textContent);
+                if (newTask !== null && newTask.trim()!==""){
+                    alert("por favor, insira uma tarefa valida!");
+                }
+            };
+
+            li.appendChild(spam);
+            li.appendChild(deleteButton);
+            li.appendChild(updateButton);
+            taskList.appendChild(li);
+
+            taskInput.value = "";
+        } else {
+            alert("por favor, insira uma tarefa valida!");
+        }
+        
+    }
+
+</script>
+</body>
+</html>
+
